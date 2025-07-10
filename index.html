@@ -22,9 +22,51 @@
     <title>Yu-Gi-Oh Jo-ken-po Edition 1.0</title>
 </head>
 <body>
-    <header>
-        <h1>ola mundo!</h1>
-    </header>
+    <main>
+        <div class="bg-video">
+            <figcaption>
+                <video class="video" autoplay loop muted>
+                    <source src="./src/assets/video/yugi.mp4" type="video/mp4"/>
+                </video>
+            </figcaption>
+        </div>
+        <div class="container">
+            <div class="container__left framed-golden-2">
+                <div class="score_box frame">
+                    <span id="score_points">Win: 0 | Lose: 0</span>
+                </div>
+                <div class="menu_avatar">
+                    <img id="card-image">
+                </div>
+                <div class="card_details frame">
+                    <p id="card-name">a</p>
+                    <p id="card-type">a</p>
+                </div>
+            </div>
+            <div class="container__right">
+                <div class="card-box__container">
+                    <div class="card-box framed" #id="computer-cards">1</div>
+    
+                    <div class="card-versus__container">
+                        <div class="versus-top">
+
+                            <div class="card-infield">
+                                <img id="player-field-card" width="125px" height="180px" >
+                            </div>
+                            <img height="100px" src="./src/assets/icons/millenium2.png">
+                            <div class="card-infield">
+                                <img id="computer-field-card" width="125px" height="180px" >
+                            </div>
+                        </div>
+                        <div class="versus-bottom">
+                            <button id="next-duel" class="rpgui-button" onclick="resetDuel()">GANHOU</button>    
+                        </div>
+                    </div>    
+                    <div class="card-box framed" #id="player-cards">3</div>
+                </div>
+            </div>
+        </div>
+    </main>
     <script src="./src/scripts/engine.js" defer></script>
 </body>
 </html>
