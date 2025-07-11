@@ -21,6 +21,9 @@
   border-image-width: 18px;
   border-width: 15px;
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   /* internal border */
   box-sizing: border-box;

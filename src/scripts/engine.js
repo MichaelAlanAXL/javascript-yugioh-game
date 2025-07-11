@@ -20,6 +20,9 @@ function init() {
 
     state.cardSprites.name.innerText = "Selecione";
     state.cardSprites.type.innerText = "uma carta";
+
+    const bgm = document.getElementById("bgm");
+    bgm.play();
 }
 
 init();
