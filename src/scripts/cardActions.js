@@ -38,7 +38,7 @@ export async function setCardsField(cardId) {
 
     await drawCardsInField(cardId, computerCardId);
 
-    let duelResults = await checkDuelResults(cardId, computerCardId);
+    let duelResults = await checkDuelResults(cardData[cardId], cardData[computerCardId]);
 
     await updateScore();
     await drowButton(duelResults);
@@ -68,16 +68,18 @@ export async function ShowHiddenCardFieldsImages(value) {
         state.fieldCard.computer.style.display = "none";
     }
 }
-export async function checkDuelResults(playerCardId, computerCardId) {
-    let duelResults = "Draw";
-    let playerCard = cardData[playerCardId];
 
-    if (playerCard.WindOf.includes(computerCardId)) {
+export async function checkDuelResults(playerCard, computerCard) {
+    let duelResults = "Draw";
+
+    //let playerCard = cardData[playerCardId];
+
+    if (playerCard.WindOf.includes(computerCard.type)) {
         duelResults = "Win";
         state.score.playerScore++;
     }
 
-    if (playerCard.LoseOf.includes(computerCardId)) {
+    if (playerCard.LoseOf.includes(computerCard.type)) {
         duelResults = "Lose";        
         state.score.computerScore++;
     }
