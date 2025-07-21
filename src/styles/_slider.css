@@ -111,3 +111,21 @@
     background-image: url('../assets/rpg/slider-thumb-golden.png');
     background-size: 100% 100%;
 }
+
+@keyframes blink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0.5;}
+}
+
+.card.winner {
+    animation: blink 1s infinite;
+}
+
+.score-updated {
+    animation: scaleUp 0.9s ease forwards;
+}
+
+@keyframes scaleUp {
+    from {transform: scale(1);}
+    to {transform: scale(1.2);}
+}

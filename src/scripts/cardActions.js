@@ -40,12 +40,20 @@ export async function setCardsField(cardId) {
 
     let duelResults = await checkDuelResults(cardData[cardId], cardData[computerCardId]);
 
+    animateWinnerCard(duelResults);
+
     await updateScore();
     await drowButton(duelResults);
 }
 
 async function updateScore() {
     state.score.scoreBox.innerText = `Win: ${state.score.playerScore} | Lose: ${state.score.computerScore}`;
+
+    state.score.scoreBox.classList.add('score-updated');
+
+    setTimeout(() => {
+        state.score.scoreBox.classList.remove('score-updated');
+    }, 3000);
 }
 
 async function drowButton(text) {
@@ -133,3 +141,33 @@ export async function drawCards(cardNumbers, fieldSide) {
         document.getElementById(fieldSide).appendChild(cardImage);
     }
 }
+
+function animateWinnerCard(winner) {
+    let element;
+    if (winner === "Win") {
+        element = state.fieldCard.player;
+    } else if (winner === "Lose") {
+        element = state.fieldCard.computer;
+    } else {
+        return;
+    }
+
+    element.classList.add("winner");
+
+    setTimeout(() => {
+        element.classList.remove("winner");
+    }, 3000);
+}
+
+const savedVolume = localStorage.getItem('volume');
+if (savedVolume !== null) {
+    const volume = parseInt(savedVolume) / 100;
+    state.volumeControls.bgm.volume = volume;
+    state.volumeControls.slider.value = savedVolume;
+}
+
+state.volumeControls.slider.addEventListener('input', () => {
+    const volume = parseInt(state.volumeControls.slider.value) / 100;
+    state.volumeControls.bgm.volume = volume;
+    localStorage.setItem('volume', state.volumeControls.slider.value);
+});

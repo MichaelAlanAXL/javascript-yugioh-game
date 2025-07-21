@@ -24,6 +24,10 @@ export const state = {
     actions: {
         button: document.getElementById("next-duel"),
     },
+    volumeControls: {
+        bgm: document.getElementById("bgm"),
+        slider: document.getElementById("volume-slider")
+    }
 };
 
 export const cardData = [
